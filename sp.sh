@@ -72,7 +72,7 @@ speed_test(){
     local latency="$(echo "$output" | cut -n -d ',' -f5)"
     local jitter="$(echo "$output" | cut -n -d ',' -f6)"
 	 
-    result="${YELLOW}${nodeISP}|${GREEN}${name}${CYAN}↑${upload}${YELLOW}${uploadStatus}${CYAN} ↓${download}${YELLOW}${downloadStatus}${CYAN} ↕ ${GREEN}${latency}${CYAN} ϟ ${GREEN}${jitter}${ENDC}"
+    result="${YELLOW}${nodeISP}|${GREEN}${name}${CYAN}|${upload}${YELLOW}${uploadStatus}${CYAN}↑ ${download}${YELLOW}${downloadStatus}${CYAN} ↓ ${GREEN}${latency}${CYAN} ϟ ${GREEN}${jitter}${ENDC}"
     if [ $downloadStatus = "正常" ]; then
 		if [ $uploadStatus = "正常" ]; then		
 			printf "$result\n"
@@ -88,16 +88,16 @@ run_test() {
     [[ ${selection} == 2 ]] && exit 1
 
     echo "————————————————————————————————————————————————————————————————————"
-    echo "服务器信息     |    回程/Mbps  ↑    下载/Mbps ↓   延迟/ms ϟ 抖动/ms"
+    echo "服务器信息       |    回程/Mbps  ↑    下载/Mbps ↓   延迟/ms ϟ 抖动/ms"
     echo "————————————————————————————————————————————————————————————————————"
     start=$(date +%s)
     failed=( )
 
     if [[ ${selection} == 1 ]] || [[ ${selection} == 3 ]]; then
-        speed_test '上海' '电信' '' 'aHR0cDovL3NwZWVkdGVzdDEub25saW5lLnNoLmNuOjgwODAvZG93bmxvYWQK' 'aHR0cDovL3NwZWVkdGVzdDEub25saW5lLnNoLmNuOjgwODAvdXBsb2FkCg=='
+        #speed_test '上海' '电信' '' 'aHR0cDovL3NwZWVkdGVzdDEub25saW5lLnNoLmNuOjgwODAvZG93bmxvYWQK' 'aHR0cDovL3NwZWVkdGVzdDEub25saW5lLnNoLmNuOjgwODAvdXBsb2FkCg=='
         #speed_test '江苏镇江5G' '电信' '' 'aHR0cDovLzVnemhlbmppYW5nLnNwZWVkdGVzdC5qc2luZm8ubmV0OjgwODAvZG93bmxvYWQ=' 'aHR0cDovLzVnemhlbmppYW5nLnNwZWVkdGVzdC5qc2luZm8ubmV0OjgwODAvdXBsb2Fk'
         #speed_test '江苏南京5G' '电信' '' 'aHR0cDovLzVnbmFuamluZy5zcGVlZHRlc3QuanNpbmZvLm5ldDo4MDgwL2Rvd25sb2FkCg==' 'aHR0cDovLzVnbmFuamluZy5zcGVlZHRlc3QuanNpbmZvLm5ldDo4MDgwL3VwbG9hZAo='
-        #speed_test '安徽合肥5G' '电信' '' 'aHR0cDovL3NwZWVkdGVzdDEuYWgxNjMuY29tOjgwODAvZG93bmxvYWQ=' 'aHR0cDovL3NwZWVkdGVzdDEuYWgxNjMuY29tOjgwODAvdXBsb2Fk'
+        speed_test '安徽合肥5G' '电信' '' 'aHR0cDovL3NwZWVkdGVzdDEuYWgxNjMuY29tOjgwODAvZG93bmxvYWQ=' 'aHR0cDovL3NwZWVkdGVzdDEuYWgxNjMuY29tOjgwODAvdXBsb2Fk'
         #speed_test '天津5G' '电信' '' 'aHR0cDovL3N5LnRqdGVsZS5jb206ODA4MC9kb3dubG9hZA==' 'aHR0cDovL3N5LnRqdGVsZS5jb206ODA4MC91cGxvYWQ='
         #speed_test '天津' '电信' '' 'aHR0cDovL3RqcmF0ZS50anRlbGUuY29tOjgwODAvZG93bmxvYWQ=' 'aHR0cDovL3RqcmF0ZS50anRlbGUuY29tOjgwODAvdXBsb2Fk'
         #经常失败speed_test '四川成都' '电信' '' 'aHR0cDovL3NwZWVkdGVzdDEuc2MuMTg5LmNuOjgwODAvZG93bmxvYWQ=' 'aHR0cDovL3NwZWVkdGVzdDEuc2MuMTg5LmNuOjgwODAvdXBsb2Fk'
