@@ -74,9 +74,7 @@ speed_test(){
 	 
     result="${YELLOW}${nodeISP}|${GREEN}${name}${CYAN}↑${upload}${YELLOW}${uploadStatus}${CYAN} ↓${download}${YELLOW}${downloadStatus}${CYAN} ↕ ${GREEN}${latency}${CYAN} ϟ ${GREEN}${jitter}${ENDC}"
     if [ $downloadStatus = "正常" ]; then
-		if [ $uploadStatus = "正常" ]; then
-			printf "$result\n"
-		elif [ $uploadStatus = "异常" ]; then			
+		if [ $uploadStatus = "正常" ]; then		
 			printf "$result\n"
 		else
 			failed+=("$result")
