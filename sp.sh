@@ -72,7 +72,7 @@ speed_test(){
     local latency="$(echo "$output" | cut -n -d ',' -f5)"
     local jitter="$(echo "$output" | cut -n -d ',' -f6)"
 	 
-    result="${YELLOW}${nodeISP}|${GREEN}${name}${CYAN}↑${upload}${${YELLOW}}${uploadStatus}${CYAN} ↓${download}${YELLOW}${downloadStatus}${CYAN} ↕ ${GREEN}${latency}${CYAN} ϟ ${GREEN}${jitter}${ENDC}"
+    result="${YELLOW}${nodeISP}|${GREEN}${name}${CYAN}↑${upload}${YELLOW}${uploadStatus}${CYAN} ↓${download}${YELLOW}${downloadStatus}${CYAN} ↕ ${GREEN}${latency}${CYAN} ϟ ${GREEN}${jitter}${ENDC}"
     if [ $downloadStatus = "正常" ]; then
 		if [ $uploadStatus = "正常" ]; then
 			printf "$result\n"
